@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div.dev</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+*{
+    scrollbar-width: thin;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-style : normal;
+}
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+nav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+nav li {
+    height: 60px;
+}
+nav a {
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+nav a.opt:hover {
+    background-color: rgb(226, 220, 220);
+}
+nav li:first-child {
+    margin-right: auto;
+    background-color: white;
+}
+.logo {
+    
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(23, 23, 27);
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: rgba(202, 195, 195, 0.312);
+    backdrop-filter: blur(100px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.sidebar a {
+    width: 100%;
+}
+.menu-button {
+    display: none;
+}
+.home {
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(240, 239, 239);
+    display: flex;
+    align-items: center;
+    gap: 7rem;
+    padding: 30px 12% 0;
+}
+.img-pic {
+    display: none;
+}
+.home-content h3{
+    font-size: 42px;
+}
+.home-content h1{
+    font-size: 54px;
+    line-height: 1.2;
+}
+.home-content p{
+    font-size: 18px;
+    margin: 25px 0 30px;
+}
+.skills {
+    width: 100%;
+    min-height: 20vh;
+    background-color: rgb(240, 239, 239);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.skill-icons {
+    align-items: center;
+    color: #767676;
+    display: flex;
+    font-size: 1.7rem;
+    position: absolute;
+}
+.skill-icons p {
+    border-right: 2px solid rgba(45, 46, 50, .5);
+    color: #2d2e32;
+    font-weight: 600;
+    margin-right: 7rem;
+    padding-right: 5rem;
+}
+.skill-icons ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    list-style: none;
+}
+.skill-icons ul li {
+    transition: 1s;
+    cursor: pointer;
+}
+.skill-icons li:hover {
+    transform: scale(1.3);
+    z-index: 2;
+}
+.btn-box {
+    width: 345px;
+    display: flex;
+    gap: 2em;
+}
+.btn-1 {
+    padding: 15px 28px;
+    background-color: black;
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.btn-1:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+.imgbox img {
+    border-radius: 50%;
+    width: 320px;
+}
+.about {
+    width: 100%;
+    min-height: 80vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 7em;
+    padding: 30px 12% 0;
+}
+.img-about img {
+    width: 420px;
+}
+.about-content h1 {
+    font-size: 52px;
+}
+.about-content h2 {
+    font-size: 46px;
+}
+.about-content p {
+    font-size: 18px;
+}
+.projects {
+    width: 100%;
+    min-height: 40vh;
+    background-color: rgb(240, 239, 239);
+    display: flex;
+    align-items: center;
+    gap: 7em;
+    padding: 30px 12% 0;
+}
+.content-proj h1 {
+    font-size: 34px;
+    text-align: center;
+}
+.contact {
+    width: 100%;
+    min-height: 60vh;
+    margin: 0 auto;
+    max-width: 110rem;
+    padding: 30px 12% 0;
+}
+.hit-cont h2 {
+    margin-top: 2rem;
+    font-size: 36px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+.cont-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8rem;
+    margin-top: 6rem;
+}
+.contact_icon-box {
+    align-items: center;
+    display: flex;
+    gap: 1.5rem;
+}
+.contact_icon-box span {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    color: #147efb;
+    display: flex;
+    height: 3rem;
+    justify-content: center;
+    width: 3rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.contact-info a{
+    text-decoration: none;
+    color: black;
+}
+.contact-info a:hover {
+    color: rgb(88, 88, 212);
+}
+footer {
+    background-color: #2d2e32;
+    padding: 4rem 0;
+    width: 100%;
+}
+.content-copyrights {
+    margin: 0 auto;
+    max-width: 107rem;
+    padding: 0 4rem;
+}
+.foot-cr {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+footer h3 {
+    color: #fff;
+    font-size: 1.1rem;
+}
+.foot-social img {
+    width: 40px;
+    margin: 8px;
+}
+@media (max-width: 800px) {
+    .hideonmobile {
+        display: none;
+    }
+    .menu-button{
+        display: block;
+    }
+    .logo {
+        font-size: 28px;
+    }
+    li {
+        display: list-item;
+        unicode-bidi: isolate;
+    }
+    nav li a {
+        cursor: pointer;
+    }
+    .home {
+        width: 100%;
+        min-height: 100vh;
+        background-color: rgb(240, 239, 239);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10px 10% 10px;
+    }
+    .img-pic {
+        display: block;
+        width: 230px;
+        margin: auto;
+        user-select: none;
+    }
+    .imgbox-1{
+        margin-top: 5rem;
+    }
+    .home-content{
+        text-align: center;
+    }
+    .home-content h3{
+        padding-top: 2rem;
+        font-size: 30px;
+    }
+    .home-content h1{
+        font-size: 40px;
+        line-height: 1.2;
+    }
+    .home-content p{
+        font-size: 14px;
+        margin: 14px 0 14px;
+    }
+    
+    .btn-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 320px;
+        padding-top: 20px;
+    }
+    .btn-1 {
+        padding: 10px 20px;
+        background-color: black;
+        color: white;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        font-size: 14px;
+        letter-spacing: 1px;
+        font-weight: 400;
+        transition: 0.3s ease;
+        cursor: pointer;
+    }
+    .btn-1:hover {
+        background-color: white;
+        color: black;
+        border: 2px solid black;
+    }
+    .imgbox img {
+        display: none;
+    }
+    .skills {
+        width: 100%;
+        min-height: 32vh;
+    }
+    .skill-icons {
+        flex-direction: column;
+        position: static;
+    }
+    .skill-icons p {
+        border-bottom: 2px solid rgba(45, 46, 50, .5);
+        border-right: none;
+        margin-bottom: 3rem;
+        margin-right: 0;
+        padding-bottom: 1rem;
+        padding-right: 0;
+    }
+    .skill-icons ul {
+        justify-content: center;
+    }
+    .about {
+        width: 100%;
+        min-height: 84vh;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3em;
+        padding: 10px 12% 0;
+    }
+    .img-about img {
+        width: 280px;
+    }
+    .about-content {
+        text-align: center;
+    }
+    .about-content h1 {
+        font-size: 40px;
+    }
+    .about-content h2 {
+        font-size: 25px;
+    }
+    .about-content p {
+        font-size: 14px;
+    }
+    .projects {
+        width: 100%;
+        min-height: 30vh;
+    }
+    .content-proj h1 {
+        font-size: 28px;
+        text-align: center;
+    }
+    .contact {
+        width: 100%;
+        min-height: 70vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;;
+        padding: 10px 10% 0;
+    }
+    .content-contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .cont {
+        text-align: center;
+    }
+    .cont-icons {
+        display: flex;
+        justify-content: center;
+        gap: 6rem;
+    }
+    footer {
+        background-color: #2d2e32;
+        padding: 3rem 0;
+        width: 100%;
+    }
+    .foot-cr {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -1rem;
+    }
+    .foot-cr h3 {
+        font-size: 14px;
+        text-align: center;
+    }
+    .foot-social img {
+        width: 30px;
+        margin: 8px;
+        padding-top: 10px;
+    }
+}
+@media (max-width:400px){
+    .sidebar{
+        width: 100%;
+    }
+
+    .logo {
+        font-size: 25px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="root">
+        <nav class="navbar">    
+        <ul class="sidebar">
+            <li onclick=hideSidebar()><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+            <li><a class="opt" href="#home">Home</a></li>
+            <li><a class="opt" href="#about">About</a></li>
+            <li><a class="opt" href="#projects">Projects</a></li>
+            <li><a class="opt" href="#contact">Contact</a></li>
+        </ul>
+        <ul>
+            <li><a class="logo" >Div.dev</a></li>
+            <li class="hideonmobile"><a class="opt" href="#home">Home</a></li>
+            <li class="hideonmobile"><a class="opt" href="#about">About</a></li>
+            <li class="hideonmobile"><a class="opt" href="#projects">Projects</a></li>
+            <li class="hideonmobile"><a class="opt" href="#contact">Contact</a></li>
+            <li class="menu-button" onclick=showSidebar()><a><svg id="menubtn" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+        </ul>
+        </nav> 
+
+        <section id="home" class="home">
+            <div class="home-content">
+                <div class="imgbox-1">
+                    <img src="https://res.cloudinary.com/dry2ypqmx/image/upload/v1702637033/1-modified_wva3qa.png" alt="profile-img" class="img-pic">
+                </div>
+                <h3>Hi👋🏼</h3>
+                <h1>I'm <span style="color: rgb(37, 101, 101);">Divakar<br></span>a Front-end Developer.</h1>
+                <p>A passoinate Front-end React Developer based in AP, India.📍</p>
+                <div class="btn-box">
+                    <a href="https://drive.google.com/file/d/12ANIfH7c-ulEWWF-dfrMeiS6szO8PTPA/view?usp=drive_link"><button class="btn-1">Download CV</button></a>
+                </div>
+            </div>
+            <div class="imgbox">
+                <img src="https://res.cloudinary.com/dry2ypqmx/image/upload/v1702637033/1-modified_wva3qa.png" alt="profile-img" class="img-profile">
+            </div>
+        </section>
+
+        <section class="skills">
+            <div class="skill-icons">
+                <p>Teck Stacks</p>
+                    <ul>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="none" viewBox="0 0 256 256"><rect width="256" height="256" fill="#E14E1D" rx="60"/><path fill="#fff" d="M48 38L56.6098 134.593H167.32L163.605 176.023L127.959 185.661L92.38 176.037L90.0012 149.435H57.9389L62.5236 200.716L127.951 218.888L193.461 200.716L202.244 102.655H85.8241L82.901 69.9448H205.041H205.139L208 38H48Z"/><path fill="#EBEBEB" d="M128 38H48L56.6098 134.593H128V102.655H85.8241L82.901 69.9448H128V38Z"/><path fill="#EBEBEB" d="M128 185.647L127.959 185.661L92.38 176.037L90.0012 149.435H57.9388L62.5236 200.716L127.951 218.888L128 218.874V185.647Z"/></svg>  
+                        </li>
+                        <li>
+                            <svg width="50" height="50" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="256" height="256" rx="60" fill="#0277BD"/>
+                                <path d="M53.7527 102.651L56.6155 134.593H128.096V102.651H53.7527Z" fill="#EBEBEB"/>
+                                <path d="M128.095 38H127.985H48L50.9036 69.9423H128.095V38Z" fill="#EBEBEB"/>
+                                <path d="M128.095 218.841V185.608L127.955 185.645L92.3813 176.04L90.1072 150.564H72.821H58.0425L62.5175 200.718L127.948 218.882L128.095 218.841Z" fill="#EBEBEB"/>
+                                <path d="M167.318 134.593L163.61 176.019L127.985 185.635V218.866L193.468 200.718L193.948 195.321L201.454 111.229L202.233 102.651L208 38H127.985V69.9423H172.994L170.088 102.651H127.985V134.593H167.318Z" fill="white"/>
+                            </svg>
+                        </li>
+                        <li> 
+                            <svg width="50" height="50" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="256" height="256" rx="60" fill="#F0DB4F"/>
+                                    <path d="M67.3117 213.932L86.9027 202.076C90.6821 208.777 94.1202 214.447 102.367 214.447C110.272 214.447 115.256 211.355 115.256 199.327V117.529H139.314V199.667C139.314 224.584 124.708 235.926 103.398 235.926C84.1533 235.926 72.9819 225.959 67.3113 213.93" fill="#323330"/>
+                                    <path d="M152.381 211.354L171.969 200.013C177.126 208.434 183.828 214.62 195.684 214.62C205.653 214.62 212.009 209.636 212.009 202.762C212.009 194.514 205.479 191.592 194.481 186.782L188.468 184.203C171.111 176.815 159.597 167.535 159.597 147.945C159.597 129.901 173.345 116.153 194.826 116.153C210.12 116.153 221.118 121.481 229.022 135.4L210.291 147.429C206.166 140.04 201.7 137.119 194.826 137.119C187.78 137.119 183.312 141.587 183.312 147.429C183.312 154.646 187.78 157.568 198.09 162.037L204.104 164.614C224.553 173.379 236.067 182.313 236.067 202.418C236.067 224.072 219.055 235.928 196.2 235.928C173.861 235.928 159.426 225.274 152.381 211.354" fill="#323330"/>
+                            </svg>
+                            
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="none" viewBox="0 0 256 256"><rect width="256" height="256" fill="#242938" rx="60"/><path fill="#00D8FF" d="M128.001 146.951C138.305 146.951 146.657 138.598 146.657 128.295C146.657 117.992 138.305 109.639 128.001 109.639C117.698 109.639 109.345 117.992 109.345 128.295C109.345 138.598 117.698 146.951 128.001 146.951Z"/><path fill-rule="evenodd" stroke="#00D8FF" stroke-width="8.911" d="M128.002 90.3633C153.05 90.3633 176.319 93.9575 193.864 99.9976C215.003 107.275 228 118.306 228 128.295C228 138.704 214.226 150.423 191.525 157.944C174.363 163.63 151.779 166.598 128.002 166.598C103.624 166.598 80.5389 163.812 63.1834 157.881C41.2255 150.376 28 138.506 28 128.295C28 118.387 40.4096 107.441 61.2515 100.175C78.8617 94.0353 102.705 90.3633 127.998 90.3633H128.002Z" clip-rule="evenodd"/><path fill-rule="evenodd" stroke="#00D8FF" stroke-width="8.911" d="M94.9811 109.438C107.495 87.7402 122.232 69.3783 136.23 57.1971C153.094 42.5206 169.144 36.7728 177.796 41.7623C186.813 46.9623 190.084 64.7496 185.259 88.1712C181.614 105.879 172.9 126.925 161.021 147.523C148.842 168.641 134.897 187.247 121.09 199.315C103.619 214.587 86.7284 220.114 77.8833 215.013C69.3003 210.067 66.0181 193.846 70.1356 172.161C73.6145 153.838 82.3451 131.349 94.977 109.438L94.9811 109.438Z" clip-rule="evenodd"/><path fill-rule="evenodd" stroke="#00D8FF" stroke-width="8.911" d="M95.0123 147.578C82.4633 125.904 73.9194 103.962 70.3531 85.7517C66.0602 63.8109 69.0954 47.0355 77.7401 42.0315C86.7485 36.8163 103.792 42.866 121.674 58.7437C135.194 70.7479 149.077 88.8052 160.99 109.383C173.204 130.481 182.358 151.856 185.919 169.844C190.425 192.608 186.778 210.001 177.941 215.116C169.367 220.08 153.676 214.825 136.945 200.427C122.809 188.263 107.685 169.468 95.0123 147.578Z" clip-rule="evenodd"/></svg>
+                            
+                        </li>
+                    </ul>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+                <div class="img-about">
+                    <img src="https://img.freepik.com/premium-photo/computer-programmer-isolated-cartoon-character_934475-17674.jpg" alt="about-img">
+                </div>
+            <div class="about-content">
+                <div class="about-data">
+                    <h1 style="color:  rgb(37, 101, 101);">ABOUT ME</h1>
+                    <h2>Front-end Developer</h2> <br>
+                    <p>Hey, I'm Divakar, and I'm a Frontend Developer. My skills and passion is to create and develop a clean UI/UX for my users. My currently stack is to create websites with a combination of React.js and Next.js for a better user experience.</p>
+                </div>
+            </div>
+        </section>
+    
+        <section id="projects" class="projects">
+            <div class="content-proj">
+                <h1 class="soon">New <span style="color:rgb(37, 101, 101) ;">projects</span> are coming soon...😍</h1>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="content-contact">
+                <div class="hit-cont">
+                    <h2 class="cont" style="color: rgb(37, 101, 101);">Contact</h2>
+                    <h3>Hit me up to contact👇</h3>
+                </div> 
+                
+                <div class="cont-icons">
+                    <div class="contact_icon-box">
+                           <span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-mail"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path><path d="M3 7l9 6l9 -6"></path></svg></span>
+                        <div class="contact-info">
+                            <h3>Mail</h3>
+                            <a href="mailto:divakarid05@gmail">divakarid05@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact_icon-box">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-map-search"><path d="M11 18l-2 -1l-6 3v-13l6 -3l6 3l6 -3v7.5"></path><path d="M9 4v13"></path><path d="M15 7v5"></path><path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path><path d="M20.2 20.2l1.8 1.8"></path></svg>
+                        </span>
+                        <div class="contact-info">
+                            <h3>Location</h3>
+                            <a>Bhimavaram,AP,India</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="copyrights">
+            <div class="content-copyrights">
+                <div class="foot-cr">
+                    <h3>
+                        Copyright©2024.All rights are reserved
+                    </h3>
+                    <div class="foot-social">
+                        <a href="https://www.linkedin.com/in/divakar-chadalavada-b01b28265?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BaJ0z%2FlVCRHeZy3xGw2Xvmg%3D%3D"><img src="https://cdn-icons-png.flaticon.com/128/10092/10092249.png" alt="linkedin"></a>
+                        <a href="https://github.com/thedivakar"><img src="https://cdn-icons-png.flaticon.com/128/11378/11378785.png" alt="github"></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+  <script>
+
+    function showSidebar(){
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'flex'
+    }
+    function hideSidebar(){
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'none'  
+    }
+    
+    document.querySelectorAll('.sidebar .opt').forEach(link => {
+            link.addEventListener('click', hideSidebar);
+        });
+  </script>
+</body>
+</html>
